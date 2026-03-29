@@ -180,7 +180,7 @@ The database must be populated with game data and migrations in order to functio
 5.  Once successfully logged in, you should see the following screen:
     
     <figure class="image"><img style="aspect-ratio:615/413;" src="Docker Install_image.png" width="615" height="413"></figure>
-6.  Now navigate to the `/modules/` folder and pick a module to start with.
+6.  Now navigate to the `/wow/playerbots-calvincore/modules/` folder and pick a module to start with.
     
 > [!CAUTION]
 > **Some modules do not follow the typical setup and require special instructions to properly install.** Review the module's Github page and _**carefully**_ go over the install instructions.
