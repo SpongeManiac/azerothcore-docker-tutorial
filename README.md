@@ -64,7 +64,7 @@ Before starting on this guide, be sure to have the following hardware and softwa
  >     \-- ...
  > ```
     
-    ```plain
+ ```plain
     DOCKER_DB_EXTERNAL_PORT=3306
     DOCKER_DB_ROOT_PASSWORD=32_length_no_special_chars_pass_
     DOCKER_VOL_DB=../ac-database
@@ -81,7 +81,7 @@ Before starting on this guide, be sure to have the following hardware and softwa
     DOCKER_AUTH_EXTERNAL_PORT=3724
     DOCKER_AC_CLIENT_FOLDER=./var/client
     DOCKER_VOL_ROOT=.
-    ```
+ ```
 4.  Navigate to the `/wow/playerbots-calvincore/modules/` folder and modify the `modules.txt` file. Add the git repository URLs on each line for the modules you want to play with.
     
     For example, these are the default modules for Calvincore:
@@ -150,11 +150,10 @@ The database must be populated with game data and migrations in order to functio
 > ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 > FLUSH PRIVILEGES;
 > ```
-    
-    *   Windows:
+ 
+  *   Windows:
         *   Run `db-staging.bat`
-    *   Linux:
-        
+  *   Linux:  
         ```sh
         sh db-staging.sh
         ```
@@ -205,7 +204,7 @@ The database must be populated with game data and migrations in order to functio
                         \-- 2024_04_07_guildhouse.sql
     ```
     
-    If your module does not have a `/data/sql` folder, it most likely means that the module does not require any SQL to be executed and you can skip it.
+   If your module does not have a `/data/sql` folder, it most likely means that the module does not require any SQL to be executed and you can skip it.
 8.  The folder will tell you which database the SQL files should be executed in. You must execute each SQL file in chronological order, starting with the oldest files first.
     1.  Switch back to the Adminer web page. Click the `DB` dropdown and select the database to execute SQL in:
         
