@@ -205,6 +205,7 @@ The database must be populated with game data and migrations in order to functio
     ```
     
    If your module does not have a `/data/sql` folder, it most likely means that the module does not require any SQL to be executed and you can skip it.
+
 8.  The folder will tell you which database the SQL files should be executed in. You must execute each SQL file in chronological order, starting with the oldest files first.
     1.  Switch back to the Adminer web page. Click the `DB` dropdown and select the database to execute SQL in:
         
