@@ -11,8 +11,10 @@ Before starting on this guide, be sure to have the following hardware and softwa
         *   Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), which bundles Docker and Docker Compose into a desktop app
     *   **For Linux:**
         *   Install Docker using the [Official Docker Install Guide](https://docs.docker.com/engine/install/), which should include Docker Compose.
-        *   > [!NOTE]
-            > Some distros keep Docker and Docker Compose in separate packages, so be sure `docker compose` is a recognized command. You may also need to install the [buildx docker plugin](https://github.com/docker/buildx?tab=readme-ov-file#linux-packages) if `docker compose build` fails.
+
+> [!NOTE]
+> Some distros keep Docker and Docker Compose in separate packages, so be sure `docker compose` is a recognized command. You may also need to install the [buildx docker plugin](https://github.com/docker/buildx?tab=readme-ov-file#linux-packages) if `docker compose build` fails.
+
 *   Github Desktop **OR** Git
     *   **For Windows:**
         *   Install [Github Desktop](https://desktop.github.com/download/) which includes Git and provides a user interface for the tool**.**
@@ -40,27 +42,27 @@ Before starting on this guide, be sure to have the following hardware and softwa
         *   Run `make-env.sh`
 3.  Modify the created `.env` file and fill in your own config values and credentials:
     
-    > [!CAUTION]
-    > The config values `DOCKER_VOL_DB` and `DOCKER_VOL_DATA` are used to define where the database and client data folders/volumes will be created.  
-    >   
-    > **Be absolutely sure that both** `**DOCKER_VOL_DB**` **and** `**DOCKER_VOL_DATA**` **point to a path on an SSD** **with a sufficient amount of storage space (100GB+).**
-    > 
-    > **DO** _**NOT**_ point the volumes to any sub-folder of the repository because it is used as a volume. The DB and client data folders must be in a separate location. The default is to place these one level above the repository folder:
-    > 
-    > ```plain
-    > wow/ <- WoW Root
-    > |-- ac-client-data/ <- Client Data Directory
-    > |   \-- ...
-    > |
-    > |-- ac-database/ <- Database Directory
-    > |   \-- ...
-    > |
-    > \-- playerbots-calvincore/ <- Repository Root
-    >     |-- modules/ <- Modules Directory
-    >     |-- docker-compose.yaml
-    >     |-- .env
-    >     \-- ...
-    > ```
+ > [!CAUTION]
+ > The config values `DOCKER_VOL_DB` and `DOCKER_VOL_DATA` are used to define where the database and client data folders/volumes will be created.  
+ >   
+ > **Be absolutely sure that both** `**DOCKER_VOL_DB**` **and** `**DOCKER_VOL_DATA**` **point to a path on an SSD** **with a sufficient amount of storage space (100GB+).**
+ > 
+ > **DO** _**NOT**_ point the volumes to any sub-folder of the repository because it is used as a volume. The DB and client data folders must be in a separate location. The default is to place these one level above the repository folder:
+ > 
+ > ```plain
+ > wow/ <- WoW Root
+ > |-- ac-client-data/ <- Client Data Directory
+ > |   \-- ...
+ > |
+ > |-- ac-database/ <- Database Directory
+ > |   \-- ...
+ > |
+ > \-- playerbots-calvincore/ <- Repository Root
+ >     |-- modules/ <- Modules Directory
+ >     |-- docker-compose.yaml
+ >     |-- .env
+ >     \-- ...
+ > ```
     
     ```plain
     DOCKER_DB_EXTERNAL_PORT=3306
@@ -96,13 +98,13 @@ Before starting on this guide, be sure to have the following hardware and softwa
     https://github.com/mod-playerbots/mod-playerbots.git
     https://github.com/azerothcore/mod-solo-lfg.git
     ```
-    
-    > [!NOTE]
-    > You can specify a particular commit for a repository with the format `[repo_url]:[commit_hash]`:
-    > 
-    > ```sh
-    > https://github.com/azerothcore/mod-ale.git:ecb3d102ac056c8ee92c3778158b475e16650ce2
-    > ```
+ 
+> [!NOTE]
+> You can specify a particular commit for a repository with the format `[repo_url]:[commit_hash]`:
+> 
+> ```sh
+> https://github.com/azerothcore/mod-ale.git:ecb3d102ac056c8ee92c3778158b475e16650ce2
+> ```
 
 ### Building Images
 
@@ -120,10 +122,10 @@ Before executing these commands, be sure you have configured the repository to y
         sh docker-build.sh
         ```
     
-    > [!CAUTION]
-    > **Watch for errors in the output of this command.** Docker likes to hide the command output to keep things tidy, but this can be annoying when debugging. To view the full output, check the build log: `/wow/playerbots-calvincore/build.log`
-    > 
-    > If you have errors, check to see if any updates have been made recently to a module or the root repository. If a module is broken due to changes, you can use a specific commit hash in the `modules.txt` file.
+> [!CAUTION]
+> **Watch for errors in the output of this command.** Docker likes to hide the command output to keep things tidy, but this can be annoying when debugging. To view the full output, check the build log: `/wow/playerbots-calvincore/build.log`
+> 
+> If you have errors, check to see if any updates have been made recently to a module or the root repository. If a module is broken due to changes, you can use a specific commit hash in the `modules.txt` file.
 
 ### Populate DB & Apply Module SQL
 
@@ -133,21 +135,21 @@ The database must be populated with game data and migrations in order to functio
 
 1.  Run the following docker command to populate and bring up the SQL dashboard:
     
-    > [!CAUTION]
-    > **Watch for errors in the DB and DB import.** If you have made any mistakes or errors in your `.env` config, they will manifest at this step. One common issue is having special characters in your DB password. Avoid problematic symbols such as ``!@#$%^&()[]{}|*=+<>/\?`~:;'"``. Dashes, underscores, periods, and commas should be fine. 
-    > 
-    > If you need to change the DB password, login to the DB using Adminer and follow any guide for modifying the root password in MySQL. If you cannot log into the DB from Adminer, you may need to log into the MySQL DB from inside the container:
-    > 
-    > ```plain
-    > # Make sure container is running
-    > docker compose up -d ac-client-data-init ac-database ac-db-import adminer
-    > # Exec into the running container
-    > docker exec -it ac-database mysql -u root -p
-    > 
-    > # Then run inside MySQL:
-    > ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
-    > FLUSH PRIVILEGES;
-    > ```
+> [!CAUTION]
+> **Watch for errors in the DB and DB import.** If you have made any mistakes or errors in your `.env` config, they will manifest at this step. One common issue is having special characters in your DB password. Avoid problematic symbols such as ``!@#$%^&()[]{}|*=+<>/\?`~:;'"``. Dashes, underscores, periods, and commas should be fine. 
+> 
+> If you need to change the DB password, login to the DB using Adminer and follow any guide for modifying the root password in MySQL. If you cannot log into the DB from Adminer, you may need to log into the MySQL DB from inside the container:
+> 
+> ```plain
+> # Make sure container is running
+> docker compose up -d ac-client-data-init ac-database ac-db-import adminer
+> # Exec into the running container
+> docker exec -it ac-database mysql -u root -p
+> 
+> # Then run inside MySQL:
+> ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+> FLUSH PRIVILEGES;
+> ```
     
     *   Windows:
         *   Run `db-staging.bat`
@@ -167,12 +169,12 @@ The database must be populated with game data and migrations in order to functio
     http://192.168.1.9:8080
     ```
     
-    > [!NOTE]
-    > If you are running the docker containers on your desktop, you can connect using `localhost`:
-    > 
-    > ```http
-    > http://localhost:8080/
-    > ```
+> [!NOTE]
+> If you are running the docker containers on your desktop, you can connect using `localhost`:
+> 
+> ```http
+> http://localhost:8080/
+> ```
 4.  Enter the credentials for your `root` DB user. Use the password that was set in the `.env` file:
     
     <table><tbody><tr><td><ul style="list-style-type:disc;"><li data-list-item-id="e7384211dbbf893d193ae27b45f066a02">Ensure <code>System</code> dropdown is set to <code>MySQL /  MariaDB</code></li><li data-list-item-id="e6fedc4c83b526f4cf62e1522843fe23e">Ensure <code>Server</code> is set to the name of your DB container, <code>ac-database</code> by default</li><li data-list-item-id="e9bc228e79a278fd74792d7b7ea0aa668">Ensure <code>Username</code> is set to <code>root</code></li><li data-list-item-id="e4b5afc9732e33bfa4cb5c1fb93ac3b61">Paste the password from your <code>.env</code> file</li><li data-list-item-id="e2754a0b575b4123b463798f6335281ec">Ensure <code>Database</code> is empty</li><li data-list-item-id="e6bbe469c5cfe8fc9a785df5ab3c0b8d1">(Optional) Check <code>Permanent login</code></li><li data-list-item-id="e15e5cc5be393dc4130d7c33ac30b358d">Click Login</li></ul></td><td><p>&nbsp;</p><figure class="image image-style-align-right"><img style="aspect-ratio:452/443;" src="3_Docker Install_image.png" width="452" height="443"></figure></td></tr></tbody></table>
@@ -181,12 +183,12 @@ The database must be populated with game data and migrations in order to functio
     <figure class="image"><img style="aspect-ratio:615/413;" src="Docker Install_image.png" width="615" height="413"></figure>
 6.  Now navigate to the `/modules/` folder and pick a module to start with.
     
-    > [!CAUTION]
-    > **Some modules do not follow the typical setup and require special instructions to properly install.** Review the module's Github page and _**carefully**_ go over the install instructions.
+> [!CAUTION]
+> **Some modules do not follow the typical setup and require special instructions to properly install.** Review the module's Github page and _**carefully**_ go over the install instructions.
 7.  Inspect the folder structure of the module. If the module has SQL to apply, it will have the path `/data/sql` like in this example using the Guild House Module:
     
-    > [!CAUTION]
-    > **Some modules do not follow the expected folder structure for SQL files, such as the Azerothcore Lua Engine (ALE).** Thoroughly inspect each folder to be sure a module does not contain any SQL to be executed.
+> [!CAUTION]
+> **Some modules do not follow the expected folder structure for SQL files, such as the Azerothcore Lua Engine (ALE).** Thoroughly inspect each folder to be sure a module does not contain any SQL to be executed.
     
     ```plain
     playerbots-calvincore/ <- Repository Root
@@ -217,9 +219,9 @@ The database must be populated with game data and migrations in order to functio
     4.  Finally, click `Execute` button:
         
         <figure class="image"><img style="aspect-ratio:560/403;" src="7_Docker Install_image.png" width="560" height="403"></figure><figure class="image"><img style="aspect-ratio:560/403;" src="1_Docker Install_image.png" width="560" height="403"></figure>
-        
-        > [!IMPORTANT]
-        > If you get an error, you may need to check the module and see if it was updated recently. Incompatibilities in the SQL structure will cause errors.
+
+> [!IMPORTANT]
+> If you get an error, you may need to check the module and see if it was updated recently. Incompatibilities in the SQL structure will cause errors.
 9.  Repeat steps **6**, **7**, and **8** for each database in each module until all modules are done. Once finished, use `ctrl+c` to stop the containers.
 
 ### Configure Server & Modules
