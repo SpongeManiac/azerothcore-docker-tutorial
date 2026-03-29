@@ -24,7 +24,7 @@ Before starting on this guide, be sure to have the following hardware and softwa
 ### Setup & Configure
 
 > [!IMPORTANT]
-> If you want to run this stack using **Portainer**, see the **Portainer Setup**.
+> If you want to run this stack using **Portainer**, see the **Portainer Setup** (WIP).
 
 1.  Start by navigating to a clean directory (I'm using `…/wow/`) and cloning a quick-start Azerothcore fork and entering the repository:
     *   Windows:
