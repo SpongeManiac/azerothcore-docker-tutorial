@@ -17,7 +17,7 @@ Before starting on this guide, be sure to have the following hardware and softwa
 
 *   Github Desktop **OR** Git
     *   **For Windows:**
-        *   Install [Github Desktop](https://desktop.github.com/download/) which includes Git and provides a user interface for the tool**.**
+        *   Install [Github Desktop](https://desktop.github.com/download/) which includes Git and provides a user interface for the tool.
     *   **For Linux:**
         *   Install Git using your distro's package manager.
 
