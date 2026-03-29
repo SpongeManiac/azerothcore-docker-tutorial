@@ -302,7 +302,7 @@ The server is finally ready to be started. You can either run the server in the 
         ```
 
 > [!WARNING]
-> When running the server in the console, **do not press** `**ctrl+c**` **to detach**, as this will stop all of the containers and servers. Instead, to detach from the server output _**without**_ stopping the server, use the key combination `ctrl+a` then `ctrl+d`. **Order matters!**
+> When running the server in the console, **do not press** `**ctrl+c**` **to detach**, as this will stop all of the containers and servers. Instead, to detach from the server output _**without**_ stopping the server, just press the `D` key.
 
 ### Game Server
 
