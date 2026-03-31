@@ -1,0 +1,100 @@
+{
+	"formatVersion": 2,
+	"appVersion": "0.98.1",
+	"files": [
+		{
+			"isClone": false,
+			"noteId": "4mqwqR2O9vHr",
+			"notePath": [
+				"4mqwqR2O9vHr"
+			],
+			"title": "Azerothcore Docker Install",
+			"notePosition": 20,
+			"prefix": null,
+			"isExpanded": false,
+			"type": "text",
+			"mime": "text/html",
+			"attributes": [],
+			"format": "html",
+			"dataFileName": "Azerothcore Docker Install.html",
+			"attachments": [
+				{
+					"attachmentId": "5BrbPoaPeAD0",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "EHchRreQRqQM",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "1_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "EuGvW1RZZgyn",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "2_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "hJSKrtFZjQU9",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "3_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "KUklXkC1T6eC",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "4_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "O0GCNFR2fYVo",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "5_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "Qlj0A89qaw8f",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "6_Azerothcore Docker Install.png"
+				},
+				{
+					"attachmentId": "xlNF62KFs6Wz",
+					"title": "image.png",
+					"role": "image",
+					"mime": "image/jpg",
+					"position": 10,
+					"dataFileName": "7_Azerothcore Docker Install.png"
+				}
+			]
+		},
+		{
+			"noImport": true,
+			"dataFileName": "navigation.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "index.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "style.css"
+		}
+	]
+}
