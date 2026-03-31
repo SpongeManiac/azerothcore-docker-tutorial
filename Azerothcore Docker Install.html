@@ -31,14 +31,7 @@
               <li class="ck-list-marker-bold" data-list-item-id="ec2d8e9fd65604614e8a7c13b242d5904"><strong>For Linux:</strong>
                 <ul>
                   <li data-list-item-id="e3e7a05d91ba86cb2fa84de28f6896a25">Install <u>Docker</u> using the <a href="https://docs.docker.com/engine/install/">Official Docker Install Guide</a>,
-                    which should include <u>Docker Compose</u>.&nbsp;</li>
-                  <li data-list-item-id="e5988442399de9b6382951d840290864e">
-                    <aside class="admonition note">
-                      <p>Some distros keep <u>Docker</u> and <u>Docker Compose</u> in separate packages,
-                        so be sure <code>docker compose</code> is a recognized command. You may also
-                        need to install the <a href="https://github.com/docker/buildx?tab=readme-ov-file#linux-packages">buildx docker plugin</a> if <code>docker compose build</code> fails.</p>
-                    </aside>
-                  </li>
+                    which should include <u>Docker Compose</u>.</li>
                 </ul>
               </li>
             </ul>
@@ -47,25 +40,28 @@
             <ul>
               <li class="ck-list-marker-bold" data-list-item-id="e78cbd57380827b5691599f2c98496c42"><strong>For Windows:</strong>
                 <ul>
-                  <li data-list-item-id="e136490555fd4903aa28833848a539251">
-                    <p>Install <a href="https://git-scm.com/install/"><u>Git</u></a>, which is
-                      a tool for version control and downloading source code.</p>
-                    <aside class="admonition caution">
-                      <p><strong>When installing Git on Windows, be sure to associate </strong><code><strong>.sh</strong></code><strong> files with bash. This will allow you to execute the scripts by double-clicking them.</strong> If
-                        you don't, you will have to either execute commands manually or re-install <u>Git</u> with
-                        this option enabled.</p>
-                    </aside>
-                  </li>
+                  <li data-list-item-id="e136490555fd4903aa28833848a539251">Install <a href="https://git-scm.com/install/"><u>Git</u></a>, which is
+                    a tool for version control and downloading source code.</li>
+                </ul>
+              </li>
+              <li class="ck-list-marker-bold" data-list-item-id="ed6c66276a3544b92dede3f7521aeecfd"><strong>For Linux:</strong>
+                <ul>
+                  <li data-list-item-id="ee8b96421f5312ace31c5ad175a9fa7cc">Install <u>Git</u> using your distro's package manager.</li>
                 </ul>
               </li>
             </ul>
           </li>
-          <li class="ck-list-marker-bold" data-list-item-id="e9ad0883ec95b8cddd2784428daddc52c"><strong>For Linux:</strong>
-            <ul>
-              <li data-list-item-id="e57a5c99fb9539acb6d268ab5d403636a">Install <u>Git</u> using your distro's package manager.</li>
-            </ul>
-          </li>
         </ul>
+        <aside class="admonition caution">
+          <p><strong>When installing Git on Windows, be sure to associate </strong><code><strong>.sh</strong></code><strong> files with bash. This will allow you to execute the scripts by double-clicking them.</strong> If
+            you don't, you will have to either execute commands manually or re-install <u>Git</u> with
+            this option enabled.</p>
+        </aside>
+        <aside class="admonition note">
+          <p>Some distros keep <u>Docker</u> and <u>Docker Compose</u> in separate packages,
+            so be sure <code>docker compose</code> is a recognized command. You may also
+            need to install the <a href="https://github.com/docker/buildx?tab=readme-ov-file#linux-packages">buildx docker plugin</a> if <code>docker compose build</code> fails.</p>
+        </aside>
         <h2>Setup &amp; Configure</h2>
         <aside class="admonition important">
           <p>If you want to run this stack using <strong>Portainer</strong>, see the <strong>Portainer Setup</strong>.</p>
@@ -86,13 +82,7 @@
     |-- docker-compose.yaml
     |-- .env
     \-- ...</code></pre>
-        <ol>
-          <li data-list-item-id="eaf7f80060d56736aff8490931030106c">
-            <p>Navigate to the <strong>Wow Root</strong> and create a terminal or powershell
-              in that directory. Then execute the following command to download the server
-              source:</p><pre><code class="language-text-plain">git clone https://github.com/SpongeManiac/playerbots-calvincore</code></pre>
-          </li>
-        </ol>
+        <p>&nbsp;</p>
         <aside class="admonition tip">
           <p><em><strong>IF</strong></em><strong> &nbsp;you enabled associating shell scripts with bash,</strong> this
             is the only command to run in the terminal. You can close it once it is
@@ -105,6 +95,11 @@
             in.</p>
         </aside>
         <ol>
+          <li data-list-item-id="eaf7f80060d56736aff8490931030106c">
+            <p>Navigate to the <strong>Wow Root</strong> and create a terminal or PowerShell
+              in that directory. Then execute the following command to download the server
+              source:</p><pre><code class="language-text-plain">git clone https://github.com/SpongeManiac/playerbots-calvincore</code></pre>
+          </li>
           <li data-list-item-id="e464c5b1dd96f3b6da3eb23ad2347566c">
             <p>Navigate into the <strong>Repository Root</strong> (The folder created from
               the clone command) and create a copy of <code>.env.example</code> and rename
@@ -131,31 +126,8 @@ DOCKER_VOL_DATA=../ac-client-data
 DOCKER_AUTH_EXTERNAL_PORT=3724
 DOCKER_AC_CLIENT_FOLDER=./var/client
 DOCKER_VOL_ROOT=.</code></pre>
-            <aside class="admonition caution">
-              <p>The config values <code>DOCKER_VOL_DB</code> and <code>DOCKER_VOL_DATA</code> are
-                used to define where the database and client data folders/volumes will
-                be created.
-                <br>
-                <br><strong>Be absolutely sure that both </strong><code><strong>DOCKER_VOL_DB</strong></code><strong> and </strong><code><strong>DOCKER_VOL_DATA</strong></code><strong> point to a path on an SSD</strong>  <strong>with a sufficient amount of storage space (100GB+).</strong>
-              </p>
-              <p><strong>DO </strong><em><strong><u>NOT</u></strong></em> point the volumes
-                to any sub-folder of the repository because it is used as a volume. The
-                DB and client data folders must be in a separate location. The default
-                is to place these one level <u>above</u> the repository folder:</p><pre><code class="language-text-plain">wow/ &lt;- WoW Root
-|-- ac-client-data/ &lt;- Client Data Directory
-|   \-- ...
-|
-|-- ac-database/ &lt;- Database Directory
-|   \-- ...
-|
-\-- playerbots-calvincore/ &lt;- Repository Root
-    |-- modules/ &lt;- Modules Directory
-    |-- docker-compose.yaml
-    |-- .env
-    \-- ...</code></pre>
-            </aside>
           </li>
-          <li data-list-item-id="eb864ef07bda1773bd781ab9b5aed79d7">
+          <li data-list-item-id="e4a58b88c053c833539ccf5e90d268dfc">
             <p>Navigate to the <code>/wow/playerbots-calvincore/modules/</code> folder
               and modify the <code>modules.txt</code> file. Add the git repository URLs
               on each line for the modules you want to play with.</p>
@@ -170,55 +142,66 @@ https://github.com/DustinHendrickson/mod-ollama-chat.git
 https://github.com/DustinHendrickson/mod-player-bot-guildhouse.git
 https://github.com/mod-playerbots/mod-playerbots.git
 https://github.com/azerothcore/mod-solo-lfg.git</code></pre>
-            <aside class="admonition note">
-              <p>You can specify a particular commit for a repository with the format <code>[repo_url]:[commit_hash]</code>:</p><pre><code class="language-text-x-sh">https://github.com/azerothcore/mod-ale.git:ecb3d102ac056c8ee92c3778158b475e16650ce2</code></pre>
-            </aside>
           </li>
         </ol>
+        <aside class="admonition caution">
+          <p><strong>Be absolutely sure that both </strong><code>DOCKER_VOL_DB</code><strong> and </strong><code>DOCKER_VOL_DATA</code><strong> point to a path on an SSD</strong>  <strong>with a sufficient amount of storage space (100GB+). </strong>The
+            config values <code>DOCKER_VOL_DB</code> and <code>DOCKER_VOL_DATA</code> are
+            used to define where the database and client data folders/volumes will
+            be created.</p>
+          <p>&nbsp;</p>
+          <p><strong>DO </strong><em><strong><u>NOT</u></strong></em> point the volumes
+            to any sub-folder of the repository because it is used as a volume. The
+            DB and client data folders must be in a separate location. The default
+            is to place these one level <u>above</u> the repository folder:</p><pre><code class="language-text-plain">wow/ &lt;- WoW Root
+|-- ac-client-data/ &lt;- Client Data Directory
+|   \-- ...
+|
+|-- ac-database/ &lt;- Database Directory
+|   \-- ...
+|
+\-- playerbots-calvincore/ &lt;- Repository Root
+    |-- modules/ &lt;- Modules Directory
+    |-- docker-compose.yaml
+    |-- .env
+    \-- …</code></pre>
+        </aside>
+        <aside class="admonition note">
+          <p>You can specify a particular commit for a repository with the format <code>[repo_url]:[commit_hash]</code>:</p><pre><code class="language-text-x-sh">https://github.com/azerothcore/mod-ale.git:ecb3d102ac056c8ee92c3778158b475e16650ce2</code></pre>
+        </aside>
         <h2>Building Images</h2>
         <p>Before executing these commands, be sure you have configured the repository
           to your liking using the previous section.</p>
-        <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
-        </p>
-        <ol>
-          <li data-list-item-id="efe0f29718ccdca1a37b37790382dcbd4">
-            <p>Build the docker images by executing the <code>docker-build.sh</code> file.</p>
-            <aside
-            class="admonition caution">
-              <p><strong>Watch for errors in the output of this command.</strong> Docker
-                likes to hide the command output to keep things tidy, but this can be annoying
-                when debugging. To view the full output, check the build log: <code>/wow/playerbots-calvincore/build.log</code>
-              </p>
-              <p>&nbsp;</p>
-              <p>If you have errors, check to see if any updates have been made recently
-                to a module or the root repository. If a module is broken due to changes,
-                you can use a specific commit hash in the <code>modules.txt</code> file.</p>
-              </aside>
-          </li>
-        </ol>
-        <h2>Populate DB &amp; Apply Module SQL</h2>
-        <p>The database must be populated with game data and migrations in order
-          to function properly. In addition to this, modules often have custom SQL
-          files that need to be applied to a database before running the world server.
-          This section will go over populating the DB and applying module SQL files.</p>
-        <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
-        </p>
-        <ol>
-          <li data-list-item-id="e8c0fdd86cdcbebc962a4fc64c15659aa">
-            <p>To populate and bring up the SQL dashboard, execute the <code>db-staging.sh</code> file.</p>
-            <aside
-            class="admonition caution">
-              <p><strong>Watch for errors in the DB and DB import.</strong> If you have
-                made any mistakes or errors in your <code>.env</code> config, they will manifest
-                at this step. One common issue is having special characters in your DB
-                password. Avoid problematic symbols such as <code>!@#$%^&amp;()[]{}|*=+&lt;&gt;/\?`~:;'"</code>.
-                Dashes, underscores, periods, and commas should be fine.&nbsp;</p>
-              <p>&nbsp;</p>
-              <p>If you need to change the DB password, login to the DB using Adminer and
-                follow any guide for modifying the root password in MySQL. If you cannot
-                log into the DB from Adminer, you may need to log into the MySQL DB from
-                inside the container:</p>
-              <p>&nbsp;</p><pre><code class="language-text-plain"># Make sure container is running
+        <p>You can now build the docker images by executing the <code>/wow/playerbots-calvincore/docker-build.sh</code> file.</p>
+        <aside
+        class="admonition caution">
+          <p><strong>Watch for errors in the output of this command.</strong> Docker
+            likes to hide the command output to keep things tidy, but this can be annoying
+            when debugging. To view the full output, check the build log: <code>/wow/playerbots-calvincore/build.log</code>
+          </p>
+          <p>&nbsp;</p>
+          <p>If you have errors, check to see if any updates have been made recently
+            to a module or the root repository. If a module is broken due to changes,
+            you can use a specific commit hash in the <code>modules.txt</code> file.</p>
+          </aside>
+          <h2>Populate DB</h2>
+          <p>The database must be populated with game data and migrations in order
+            to function properly. In addition to this, modules often have custom SQL
+            files that need to be applied to a database before running the world server.
+            This section will go over populating the DB and applying module SQL files.</p>
+          <aside
+          class="admonition caution">
+            <p><strong>Watch for errors in the DB and DB import.</strong> If you have
+              made any mistakes or errors in your <code>.env</code> config, they will manifest
+              at this step. One common issue is having special characters in your DB
+              password. Avoid problematic symbols such as <code>!@#$%^&amp;()[]{}|*=+&lt;&gt;/\?`~:;'"</code>.
+              Dashes, underscores, periods, and commas should be fine.&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>If you need to change the DB password, login to the DB using Adminer and
+              follow any guide for modifying the root password in MySQL. If you cannot
+              log into the DB from Adminer, you may need to log into the MySQL DB from
+              inside the container:</p>
+            <p>&nbsp;</p><pre><code class="language-text-plain"># Make sure container is running
 docker compose up -d ac-client-data-init ac-database ac-db-import adminer
 # Exec into the running container
 docker exec -it ac-database mysql -u root -p
@@ -226,83 +209,106 @@ docker exec -it ac-database mysql -u root -p
 # Then run inside MySQL:
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 FLUSH PRIVILEGES;</code></pre>
-              </aside>
-              <p>&nbsp;</p>
-          </li>
-          <li data-list-item-id="e417da3708028c30d32a86a3dd0b9e7ee">
-            <p>Wait for the DB Import process to complete. It will be complete when you
-              see the following line in the console log:</p>
-            <p>&nbsp;</p><pre><code class="language-text-plain">ac-adminer   | [Sat Mar 28 17:24:50 2026] PHP 8.4.19 Development Server (http://[::]:8080) started</code></pre>
-          </li>
-          <li data-list-item-id="e607ed4cbab2f13288fad612101b7ba0d">
-            <p>Open the Adminer web page in a browser. You will need to enter the <code>IP:Port</code> of
-              the server running the docker containers:</p><pre><code class="language-message-http">http://192.168.1.9:8080</code></pre>
-            <aside
-            class="admonition note">
-              <p>If you are running the docker containers on your desktop, you can connect
-                using <code>localhost</code>:</p><pre><code class="language-message-http">http://localhost:8080/</code></pre>
-              </aside>
-          </li>
-          <li data-list-item-id="ec96c7a61a3e4cb16ceba7053d8d6c7b3">
-            <p>Enter the credentials for your <code>root</code> DB user. Use the password
-              that was set in the <code>.env</code> file:</p>
-            <figure class="table">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>
-                      <ul style="list-style-type:disc;">
-                        <li data-list-item-id="e7384211dbbf893d193ae27b45f066a02">Ensure <code>System</code> dropdown is set to <code>MySQL /  MariaDB</code>
-                        </li>
-                        <li data-list-item-id="e6fedc4c83b526f4cf62e1522843fe23e">Ensure <code>Server</code> is set to the name of your DB container, <code>ac-database</code> by
-                          default</li>
-                        <li data-list-item-id="e9bc228e79a278fd74792d7b7ea0aa668">Ensure <code>Username</code> is set to <code>root</code>
-                        </li>
-                        <li data-list-item-id="e4b5afc9732e33bfa4cb5c1fb93ac3b61">Paste the password from your <code>.env</code> file</li>
-                        <li data-list-item-id="e2754a0b575b4123b463798f6335281ec">Ensure <code>Database</code> is empty</li>
-                        <li data-list-item-id="e6bbe469c5cfe8fc9a785df5ab3c0b8d1">(Optional) Check <code>Permanent login</code>
-                        </li>
-                        <li data-list-item-id="e15e5cc5be393dc4130d7c33ac30b358d">Click Login</li>
-                      </ul>
-                    </td>
-                    <td>
-                      <p>&nbsp;</p>
-                      <figure class="image image-style-align-right">
-                        <img style="aspect-ratio:452/443;" src="3_Azerothcore Docker Install.png"
-                        width="452" height="443">
-                      </figure>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </figure>
-          </li>
-          <li data-list-item-id="e8e5313c1de9c5d8e847ede07dcc13de1">
-            <p>Once successfully logged in, you should see the following screen:</p>
-            <figure
-            class="image">
-              <img style="aspect-ratio:615/413;" src="Azerothcore Docker Install.png"
-              width="615" height="413">
-              </figure>
-          </li>
-          <li data-list-item-id="ea1e5ceb643ebfcfbf88bc2ed453cb903">
-            <p>Now navigate to the <code>/modules/</code> folder and pick a module to start
-              with.</p>
+            </aside>
+            <aside class="admonition important">
+              <p>The database will not fully populate until it is run at least once. Each
+                time you build the server, be sure to execute <code>docker_run.sh</code> at
+                least once before executing module SQL.</p>
+            </aside>
+            <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
+            </p>
+            <ol>
+              <li data-list-item-id="e8c0fdd86cdcbebc962a4fc64c15659aa">
+                <p>Be sure to let the server completely boot at least once and execute <code>docker_run.sh</code>.</p>
+                <p>&nbsp;</p>
+              </li>
+              <li data-list-item-id="eceddb87861a0006a7e5a90d9b7a637c2">Once the server has completely booted and all SQL has been applied, stop
+                the server with <code>ctrl+c</code>.</li>
+            </ol>
+            <p>&nbsp;</p>
+            <h2>Connecting to Adminer</h2>
+            <aside class="admonition tip">
+              <p>If you are running the docker containers on another host, you can connect
+                to Adminer using <code>IP:Port</code>:</p><pre><code class="language-message-http">http://192.168.1.18:8080/</code></pre>
+            </aside>
+            <ol>
+              <li data-list-item-id="e23657db82a6804e480303d280e01d293">
+                <p>To stage changes to the SQL server, execute the <code>db-staging.sh</code> file.
+                  This will only bring up the db and db import containers so that you can
+                  execute module SQL.</p>
+                <p>&nbsp;</p>
+                <p>Wait for the DB Import process to complete. It will be complete when you
+                  see the following line in the console log:</p>
+                <p>&nbsp;</p><pre><code class="language-text-plain">ac-adminer   | [Sat Mar 28 17:24:50 2026] PHP 8.4.19 Development Server (http://[::]:8080) started</code></pre>
+              </li>
+              <li data-list-item-id="e607ed4cbab2f13288fad612101b7ba0d">
+                <p>Open the Adminer web page in a browser. You will need to enter the <code>IP:Port</code> of
+                  the server running the docker containers. In my case, I'm running them
+                  on my desktop so I can use <code>localhost</code> instead of an IP address:</p><pre><code class="language-message-http">http://localhost:8080</code></pre>
+              </li>
+              <li data-list-item-id="ec96c7a61a3e4cb16ceba7053d8d6c7b3">
+                <p>Enter the credentials for your <code>root</code> DB user. Use the password
+                  that was set in the <code>.env</code> file:</p>
+                <figure class="table">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <ul style="list-style-type:disc;">
+                            <li data-list-item-id="e7384211dbbf893d193ae27b45f066a02">Ensure <code>System</code> dropdown is set to <code>MySQL /  MariaDB</code>
+                            </li>
+                            <li data-list-item-id="e6fedc4c83b526f4cf62e1522843fe23e">Ensure <code>Server</code> is set to the name of your DB container, <code>ac-database</code> by
+                              default</li>
+                            <li data-list-item-id="e9bc228e79a278fd74792d7b7ea0aa668">Ensure <code>Username</code> is set to <code>root</code>
+                            </li>
+                            <li data-list-item-id="e4b5afc9732e33bfa4cb5c1fb93ac3b61">Paste the password from your <code>.env</code> file</li>
+                            <li data-list-item-id="e2754a0b575b4123b463798f6335281ec">Ensure <code>Database</code> is empty</li>
+                            <li data-list-item-id="e6bbe469c5cfe8fc9a785df5ab3c0b8d1">(Optional) Check <code>Permanent login</code>
+                            </li>
+                            <li data-list-item-id="e15e5cc5be393dc4130d7c33ac30b358d">Click Login</li>
+                          </ul>
+                        </td>
+                        <td>
+                          <p>&nbsp;</p>
+                          <figure class="image image-style-align-right">
+                            <img style="aspect-ratio:452/443;" src="3_Azerothcore Docker Install.png"
+                            width="452" height="443">
+                          </figure>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </figure>
+              </li>
+              <li data-list-item-id="e8e5313c1de9c5d8e847ede07dcc13de1">
+                <p>Once successfully logged in, you should see the following screen:</p>
+                <figure
+                class="image">
+                  <img style="aspect-ratio:615/413;" src="Azerothcore Docker Install.png"
+                  width="615" height="413">
+                  </figure>
+              </li>
+            </ol>
+            <p>&nbsp;</p>
+            <h2>Apply Module SQL</h2>
             <aside class="admonition caution">
               <p><strong>Some modules do not follow the typical setup and require special instructions to properly install. </strong>Review
                 the module's Github page and <em><strong>carefully</strong></em> go over
                 the install instructions.</p>
-            </aside>
-          </li>
-          <li data-list-item-id="e74a2ac2fe447e96ebc1c8e40675462ee">
-            <p>Inspect the folder structure of the module. If the module has SQL to apply,
-              it will have the path <code>/data/sql</code> like in this example using the
-              Guild House Module:</p>
-            <aside class="admonition caution">
-              <p><strong>Some modules do not follow the expected folder structure for SQL files, such as the Azerothcore Lua Engine (ALE).</strong> Thoroughly
+              <p><strong>Some modules do not follow the expected folder structure for SQL files.</strong> Thoroughly
                 inspect each folder to be sure a module does not contain any SQL to be
                 executed.</p>
-            </aside><pre><code class="language-text-plain">playerbots-calvincore/ &lt;- Repository Root
+            </aside>
+            <ol>
+              <li data-list-item-id="ed105af2fe90c735ab9bc1ce3a2227725">
+                <p>Navigate to the <code>/modules/</code> folder and pick a module to start
+                  with.</p>
+                <p>&nbsp;</p>
+              </li>
+              <li data-list-item-id="e74a2ac2fe447e96ebc1c8e40675462ee">
+                <p>Inspect the folder structure of the module. If the module has SQL to apply,
+                  it will have the path <code>/data/sql</code> like in this example using the
+                  Guild House Module:</p><pre><code class="language-text-plain">playerbots-calvincore/ &lt;- Repository Root
 \-- modules/ &lt;- Modules Folder
     \-- mod-guildhouse/ &lt;- Guildhouse Module
         \-- data/
@@ -314,103 +320,104 @@ FLUSH PRIVILEGES;</code></pre>
                 |
                 \-- db-characters/ &lt;- These SQL files are for the characters DB
                     \-- 2024_04_07_guildhouse.sql</code></pre>
-            <p>If your module does not have a <code>/data/sql</code> folder, it most likely
-              means that the module does not require any SQL to be executed and you can
-              skip it.</p>
-          </li>
-          <li data-list-item-id="e31c94cb37fe69ea6febd42cd72ef2e32">The folder will tell you which database the SQL files should be executed
-            in. You must execute each SQL file in chronological order, starting with
-            the oldest files first.
-            <ol>
-              <li data-list-item-id="eea209ea70a759809ecc786178a721b1c">
-                <p>Switch back to the Adminer web page. Click the <code>DB</code> dropdown
-                  and select the database to execute SQL in:</p>
-                <figure class="image">
-                  <img style="aspect-ratio:610/422;" src="4_Azerothcore Docker Install.png"
-                  width="610" height="422">
-                </figure>
+                <p>If your module does not have a <code>/data/sql</code> folder, it most likely
+                  means that the module does not require any SQL to be executed and you can
+                  skip it.</p>
               </li>
-              <li data-list-item-id="edaba416f2891a79b27daafbf8a3def74">
-                <p>Once the proper database is selected, click the <code>Import</code> link:</p>
-                <figure
-                class="image">
-                  <img style="aspect-ratio:610/422;" src="6_Azerothcore Docker Install.png"
-                  width="610" height="422">
-                  </figure>
+              <li data-list-item-id="e31c94cb37fe69ea6febd42cd72ef2e32">The folder will tell you which database the SQL files should be executed
+                in. You must execute each SQL file in chronological order, starting with
+                the oldest files first.
+                <ol>
+                  <li data-list-item-id="eea209ea70a759809ecc786178a721b1c">
+                    <p>Switch back to the Adminer web page. Click the <code>DB</code> dropdown
+                      and select the database to execute SQL in:</p>
+                    <figure class="image">
+                      <img style="aspect-ratio:610/422;" src="4_Azerothcore Docker Install.png"
+                      width="610" height="422">
+                    </figure>
+                  </li>
+                  <li data-list-item-id="edaba416f2891a79b27daafbf8a3def74">
+                    <p>Once the proper database is selected, click the <code>Import</code> link:</p>
+                    <figure
+                    class="image">
+                      <img style="aspect-ratio:610/422;" src="6_Azerothcore Docker Install.png"
+                      width="610" height="422">
+                      </figure>
+                  </li>
+                  <li data-list-item-id="e06cd42c2e2f83b5f303309530b085e89">
+                    <p>Now click the <code>Browse…</code> button and select the SQL files to be
+                      executed:</p>
+                    <figure class="image">
+                      <img style="aspect-ratio:960/734;" src="2_Azerothcore Docker Install.png"
+                      width="960" height="734">
+                    </figure>
+                  </li>
+                  <li data-list-item-id="ef3d6bf7b6e3355224c6323d0108b3312">
+                    <p>Finally, click <code>Execute</code> button:</p>
+                    <figure class="image">
+                      <img style="aspect-ratio:560/403;" src="7_Azerothcore Docker Install.png"
+                      width="560" height="403">
+                    </figure>
+                    <figure class="image">
+                      <img style="aspect-ratio:560/403;" src="1_Azerothcore Docker Install.png"
+                      width="560" height="403">
+                    </figure>
+                  </li>
+                </ol>
               </li>
-              <li data-list-item-id="e06cd42c2e2f83b5f303309530b085e89">
-                <p>Now click the <code>Browse…</code> button and select the SQL files to be
-                  executed:</p>
-                <figure class="image">
-                  <img style="aspect-ratio:960/734;" src="2_Azerothcore Docker Install.png"
-                  width="960" height="734">
-                </figure>
-              </li>
-              <li data-list-item-id="ef3d6bf7b6e3355224c6323d0108b3312">
-                <p>Finally, click <code>Execute</code> button:</p>
-                <figure class="image">
-                  <img style="aspect-ratio:560/403;" src="7_Azerothcore Docker Install.png"
-                  width="560" height="403">
-                </figure>
-                <figure class="image">
-                  <img style="aspect-ratio:560/403;" src="1_Azerothcore Docker Install.png"
-                  width="560" height="403">
-                </figure>
-                <aside class="admonition important">
-                  <p>If you get an error, you may need to check the module and see if it was
-                    updated recently. Incompatibilities in the SQL structure will cause errors.</p>
-                </aside>
-              </li>
+              <li data-list-item-id="e344ce1b6132984671dadc7289e7ee644">Repeat steps <strong>6</strong>, <strong>7</strong>, and <strong>8</strong> for
+                each database in each module until all modules are done. Once finished,
+                use <code>ctrl+c</code> to stop the containers.</li>
             </ol>
-          </li>
-          <li data-list-item-id="e344ce1b6132984671dadc7289e7ee644">Repeat steps <strong>6</strong>, <strong>7</strong>, and <strong>8</strong> for
-            each database in each module until all modules are done. Once finished,
-            use <code>ctrl+c</code> to stop the containers.</li>
-        </ol>
-        <h2>Configure Server &amp; Modules</h2>
-        <p>Now that the containers are built and the database is ready, we must configure
-          the server settings and module settings.</p>
-        <ol>
-          <li data-list-item-id="e2ac00797ac2679084aa2cbafcdee5796">
-            <p>Ensure each <code>.dist</code> file has been duplicated and renamed to be <code>.conf</code> under
-              the following paths:</p>
-            <ul>
-              <li data-list-item-id="eec03540bb79a43053e324daf7ac5bedc"><code>/playerbots-calvincore/env/dist/etc/</code>
-              </li>
-              <li data-list-item-id="e7be5d1f66b4e231787aa3c6be8186096"><code>/playerbots-calvincore/env/dist/etc/module/</code>
-              </li>
-            </ul>
-            <figure class="table">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Server Configs</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/
+            <aside class="admonition important">
+              <p>If you get any errors, you may need to check the module and see if it
+                was updated recently. Incompatibilities in the SQL structure will cause
+                errors.</p>
+            </aside>
+            <h2>Configure Server &amp; Modules</h2>
+            <p>Now that the containers are built and the database is ready, we must configure
+              the server settings and module settings.</p>
+            <ol>
+              <li data-list-item-id="e2ac00797ac2679084aa2cbafcdee5796">
+                <p>Ensure each <code>.dist</code> file has been duplicated and renamed to be <code>.conf</code> under
+                  the following paths:</p>
+                <ul>
+                  <li data-list-item-id="eec03540bb79a43053e324daf7ac5bedc"><code>/playerbots-calvincore/env/dist/etc/</code>
+                  </li>
+                  <li data-list-item-id="e7be5d1f66b4e231787aa3c6be8186096"><code>/playerbots-calvincore/env/dist/etc/module/</code>
+                  </li>
+                </ul>
+                <figure class="table">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Server Configs</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/
 |-- worldserver.conf.dist
 |-- dbimport.conf.dist
 \-- authserver.conf.dist</code></pre>
-                    </td>
-                    <td>→</td>
-                    <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/
+                        </td>
+                        <td>→</td>
+                        <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/
 |-- worldserver.conf.dist
 |-- worldserver.conf
 |-- dbimport.conf.dist
 |-- dbimport.conf
 |-- authserver.conf.dist
 \-- authserver.conf</code></pre>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Server Modules</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/modules
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Server Modules</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/modules
 |-- fly-anywhere.conf.dist
 |-- low_level_rbg.conf.dist
 |-- mod_achievements.conf.dist
@@ -421,9 +428,9 @@ FLUSH PRIVILEGES;</code></pre>
 |-- mod_player_bot_guildhouse.conf.dist
 |-- playerbots.conf.dist
 \-- SoloLfg.conf.dist</code></pre>
-                    </td>
-                    <td>→</td>
-                    <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/modules
+                        </td>
+                        <td>→</td>
+                        <td><pre><code class="language-text-plain">playerbots-calvincore/env/dist/etc/modules
 |-- fly-anywhere.conf
 |-- fly-anywhere.conf.dist
 |-- low_level_rbg.conf
@@ -444,84 +451,84 @@ FLUSH PRIVILEGES;</code></pre>
 |-- playerbots.conf.dist
 |-- SoloLfg.conf
 \-- SoloLfg.conf.dist</code></pre>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </figure>
-          </li>
-          <li data-list-item-id="eec79504dd0bb90978f63fab9fd61691d">Go through each <code>.conf</code> file in both directories and apply settings
-            to your liking.</li>
-        </ol>
-        <aside class="admonition important">
-          <p><strong>Some modules will only work if enabled through the config.</strong> Additionally,
-            modules such as the Auction House may require extra steps such as setting
-            up a dedicated auction house character.</p>
-        </aside>
-        <h2>Run Server</h2>
-        <p>The server is finally ready to be started. You can either run the server
-          in the background, or you can run the server in the console to observe
-          the output. I recommend running the server in the console at least once
-          to ensure no errors occur during startup.</p>
-        <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
-        </p>
-        <ul>
-          <li data-list-item-id="ec30a8a98866a151d441dc21982aad4e6">Start in console:
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </figure>
+              </li>
+              <li data-list-item-id="eec79504dd0bb90978f63fab9fd61691d">Go through each <code>.conf</code> file in both directories and apply settings
+                to your liking.</li>
+            </ol>
+            <aside class="admonition important">
+              <p><strong>Some modules will only work if enabled through the config.</strong> Additionally,
+                modules such as the Auction House may require extra steps such as setting
+                up a dedicated auction house character.</p>
+            </aside>
+            <h2>Run Server</h2>
+            <p>The server is finally ready to be started. You can either run the server
+              in the background, or you can run the server in the console to observe
+              the output. I recommend running the server in the console at least once
+              to ensure no errors occur during startup.</p>
+            <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
+            </p>
             <ul>
-              <li data-list-item-id="e4a656cab9a25a3da99b90281df364a5f">Windows:
+              <li data-list-item-id="ec30a8a98866a151d441dc21982aad4e6">Start in console:
                 <ul>
-                  <li data-list-item-id="e3daf263bb6ad9da05e942fb8725bb906">Run <code>console_start.bat</code>
+                  <li data-list-item-id="e4a656cab9a25a3da99b90281df364a5f">Windows:
+                    <ul>
+                      <li data-list-item-id="e3daf263bb6ad9da05e942fb8725bb906">Run <code>console_start.bat</code>
+                      </li>
+                    </ul>
+                  </li>
+                  <li data-list-item-id="e409caf0cba80566e19f76d58ef17e990">
+                    <p>Linux:</p><pre><code class="language-text-plain">docker compose up</code></pre>
                   </li>
                 </ul>
               </li>
-              <li data-list-item-id="e409caf0cba80566e19f76d58ef17e990">
-                <p>Linux:</p><pre><code class="language-text-plain">docker compose up</code></pre>
-              </li>
-            </ul>
-          </li>
-          <li data-list-item-id="e97ddbef1972fd168d0d25158f02245f9">Start in background:
-            <ul>
-              <li data-list-item-id="e5ff963d77ad6d9b394e2175c7351b3b7">Windows:
+              <li data-list-item-id="e97ddbef1972fd168d0d25158f02245f9">Start in background:
                 <ul>
-                  <li data-list-item-id="e141bcaa794e1830a91014145cb24bdf1">Run <code>background_start.bat</code>
+                  <li data-list-item-id="e5ff963d77ad6d9b394e2175c7351b3b7">Windows:
+                    <ul>
+                      <li data-list-item-id="e141bcaa794e1830a91014145cb24bdf1">Run <code>background_start.bat</code>
+                      </li>
+                    </ul>
+                  </li>
+                  <li data-list-item-id="e77daf6f8b27afc759b29593cd1d40302">
+                    <p>Linux:</p><pre><code class="language-text-plain">docker compose up -d</code></pre>
                   </li>
                 </ul>
               </li>
-              <li data-list-item-id="e77daf6f8b27afc759b29593cd1d40302">
-                <p>Linux:</p><pre><code class="language-text-plain">docker compose up -d</code></pre>
-              </li>
             </ul>
-          </li>
-        </ul>
-        <aside class="admonition warning">
-          <p>When running the server in the console, <strong>do not press </strong><code><strong>ctrl+c</strong></code><strong> to <u>detach</u></strong>,
-            as this will stop all of the containers and servers. Instead, to <u>detach</u> from
-            the server output <em><strong>without</strong></em> stopping the server,
-            use the key combination <code>ctrl+a</code> then <code>ctrl+d</code>. <strong>Order matters!</strong>
-          </p>
-        </aside>
-        <h2>Game Server</h2>
-        <p>Before you can log into the server, you must add an account for yourself
-          and anyone else who wants to play. You can do this by attaching to the
-          Game Server.</p>
-        <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
-        </p>
-        <ul>
-          <li data-list-item-id="ee54c4013e163bc09ca55de730ae31ffc">
-            <p>Execute the following command:</p><pre><code class="language-text-plain">docker attach ac-worldserver</code></pre>
+            <aside class="admonition warning">
+              <p>When running the server in the console, <strong>do not press </strong><code><strong>ctrl+c</strong></code><strong> to <u>detach</u></strong>,
+                as this will stop all of the containers and servers. Instead, to <u>detach</u> from
+                the server output <em><strong>without</strong></em> stopping the server,
+                use the key combination <code>ctrl+a</code> then <code>ctrl+d</code>. <strong>Order matters!</strong>
+              </p>
+            </aside>
+            <h2>Game Server</h2>
+            <p>Before you can log into the server, you must add an account for yourself
+              and anyone else who wants to play. You can do this by attaching to the
+              Game Server.</p>
+            <p><strong>From the Repository Root (</strong><code>/wow/playerbots-calvincore/</code><strong>):</strong>
+            </p>
             <ul>
-              <li data-list-item-id="ec66200a17d840b8b2134b9eb5e293edc">
-                <p>To add an account, run the following command:</p><pre><code class="language-text-plain">account create &lt;username&gt; &lt;password&gt;</code></pre>
-                <p>Example:</p><pre><code class="language-text-plain">account create sillygoose 900$3</code></pre>
+              <li data-list-item-id="ee54c4013e163bc09ca55de730ae31ffc">
+                <p>Execute the following command:</p><pre><code class="language-text-plain">docker attach ac-worldserver</code></pre>
+                <ul>
+                  <li data-list-item-id="ec66200a17d840b8b2134b9eb5e293edc">
+                    <p>To add an account, run the following command:</p><pre><code class="language-text-plain">account create &lt;username&gt; &lt;password&gt;</code></pre>
+                    <p>Example:</p><pre><code class="language-text-plain">account create sillygoose 900$3</code></pre>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-        </ul>
-        <aside class="admonition caution">
-          <p><strong>Do </strong><em><strong><u>NOT</u></strong></em><strong> use </strong><code><strong>ctrl+c</strong></code><strong> to detach from the world server!</strong> When
-            finished executing commands on the game server, use the key-combo <code>ctrl+p</code> then <code>ctrl+q</code> to
-            safely detach without closing the server.</p>
-        </aside>
+            <aside class="admonition caution">
+              <p><strong>Do </strong><em><strong><u>NOT</u></strong></em><strong> use </strong><code><strong>ctrl+c</strong></code><strong> to detach from the world server!</strong> When
+                finished executing commands on the game server, use the key-combo <code>ctrl+p</code> then <code>ctrl+q</code> to
+                safely detach without closing the server.</p>
+            </aside>
       </div>
     </div>
   </body>
