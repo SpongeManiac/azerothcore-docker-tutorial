@@ -81,16 +81,16 @@ wow/ <- WoW Root
     For example, these are the default modules for Calvincore:
     
     ```sh
-    https://github.com/azerothcore/mod-account-achievements.git
-    https://github.com/azerothcore/mod-ah-bot.git
-    https://github.com/azerothcore/mod-ale.git
-    https://github.com/abracadaniel22/mod-fly-anywhere.git
-    https://github.com/azerothcore/mod-guildhouse.git
-    https://github.com/azerothcore/mod-low-level-rbg.git
-    https://github.com/DustinHendrickson/mod-ollama-chat.git
-    https://github.com/DustinHendrickson/mod-player-bot-guildhouse.git
-    https://github.com/mod-playerbots/mod-playerbots.git
-    https://github.com/azerothcore/mod-solo-lfg.git
+    https://github.com/azerothcore/mod-account-achievements.git:bfbe3677635feeef823057964e028e023633115a
+    https://github.com/azerothcore/mod-ah-bot.git:a680cc1c98290713e9b3d3289544af78e5186dc1
+    https://github.com/azerothcore/mod-ale.git:1ab53bac10a784e9a18e15d2be3b6d0603c91580
+    https://github.com/abracadaniel22/mod-fly-anywhere.git:d8c8ea76bb7ef6aea395527ec42aff43c6e02799
+    https://github.com/azerothcore/mod-guildhouse.git:f7e225a3401bc363b0ece5f513eca1d9785236b7
+    https://github.com/azerothcore/mod-low-level-rbg.git:fd6077de0fd49bf2caaae3c5c4dcb857178cf7b9
+    https://github.com/DustinHendrickson/mod-ollama-chat.git:186d6a120a025729b430c7c42e7c5d3ad8aa7833
+    https://github.com/DustinHendrickson/mod-player-bot-guildhouse.git:1d4d649982a523b674321f6ca4c23d11e60c1b7b
+    https://github.com/mod-playerbots/mod-playerbots.git:c8dce882d621f6250a96370bfd3c1bf79e9ebc4e
+    https://github.com/azerothcore/mod-solo-lfg.git:3821fe1d108ade8d2b7ad6611e41154e05864c65
     ```
 
 > [!CAUTION]
