@@ -291,25 +291,10 @@ The server is finally ready to be started. You can either run the server in the 
 
 **From the Repository Root (**`/wow/playerbots-calvincore/`**):**
 
-*   Start in console:
-    *   Windows:
-        *   Run `console_start.bat`
-    *   Linux:
-        
-        ```plain
-        docker compose up
-        ```
-*   Start in background:
-    *   Windows:
-        *   Run `background_start.bat`
-    *   Linux:
-        
-        ```plain
-        docker compose up -d
-        ```
+*   Execute the `docker_run.sh` file to start the Azerothcore services. This will start the server and show the server console.
 
 > [!WARNING]
-> When running the server in the console, **do not press** `**ctrl+c**` **to detach**, as this will stop all of the containers and servers. Instead, to detach from the server output _**without**_ stopping the server, use the key combination `ctrl+a` then `ctrl+d`. **Order matters!**
+> When running the servers in the console, **do not press** `**ctrl+c**` **to detach**, as this will stop all of the containers and servers. Instead, to detach from the container output _**without**_ stopping the server, use the key combination `ctrl+a` then `ctrl+d`. **Order matters!**
 
 ## Game Server
 
@@ -317,12 +302,7 @@ Before you can log into the server, you must add an account for yourself and any
 
 **From the Repository Root (**`/wow/playerbots-calvincore/`**):**
 
-*   Execute the following command:
-    
-    ```plain
-    docker attach ac-worldserver
-    ```
-    
+*   Execute the `docker-attach.sh` file
     *   To add an account, run the following command:
         
         ```plain
@@ -332,8 +312,8 @@ Before you can log into the server, you must add an account for yourself and any
         Example:
         
         ```plain
-        account create sillygoose 900$3
+        account create goose 900$3
         ```
 
 > [!CAUTION]
-> **Do** _**NOT**_ **use** `**ctrl+c**` **to detach from the world server!** When finished executing commands on the game server, use the key-combo `ctrl+p` then `ctrl+q` to safely detach without closing the server.
+> **Do** _**NOT**_ **use** `**ctrl+c**` **or** `**ctr+a ctrl+d**` **to detach from the world server!** When finished executing commands on the game server, use the key-combo `ctrl+p` then `ctrl+q` to safely detach without closing the server.
